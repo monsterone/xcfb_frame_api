@@ -5,6 +5,7 @@
 from openpyxl import load_workbook
 from tools.read_config import ReadConfig
 from tools.project_path import *
+import pprint
 class DoExcel():
 
     def __init__(self,file_name,sheet_name=None):
@@ -41,9 +42,11 @@ class DoExcel():
                     sub_data["module"] = sheet.cell(i, 2).value
                     sub_data["title"] = sheet.cell(i, 3).value
                     sub_data["method"] = sheet.cell(i, 4).value
-                    sub_data["url"] = sheet.cell(i, 5).value
-                    sub_data["data"] = sheet.cell(i, 6).value
-                    sub_data["expected"] = sheet.cell(i, 7).value
+                    sub_data["type"] = sheet.cell(i, 5).value  #5
+                    sub_data["url"] = sheet.cell(i, 6).value
+                    sub_data["data"] = sheet.cell(i, 7).value
+                    sub_data["get_value"] = sheet.cell(i, 8).value #8
+                    sub_data["expected"] = sheet.cell(i, 9).value
                     sub_data["sheet_name"] = key
                     test_data.append(sub_data)
 
@@ -53,13 +56,14 @@ class DoExcel():
         wb = load_workbook(self.file_name)
         sheet = wb[self.sheet_name]
 
-        sheet.cell(i,8).value=value
-        sheet.cell(i,9).value=TestResult
+        sheet.cell(i,10).value=value
+        sheet.cell(i,11).value=TestResult
         wb.save(self.file_name)  #保存结果
 
 
 
 if __name__ == '__main__':
     res=DoExcel(test_case_path).get_data()
-    print(res)
-    print(len(res))
+    # print(res)
+    # print(len(res))
+    pprint.pprint(res)

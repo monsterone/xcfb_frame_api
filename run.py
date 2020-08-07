@@ -4,7 +4,7 @@
 
 
 import unittest
-import HTMLTestReportCN
+from test_result.TestRunner.HTMLTestRunnerCN import HTMLTestReportCN
 from tools.project_path import *
 from test_suite.test_case import TestHttpRequest
 
