@@ -6,8 +6,20 @@ import requests
 
 
 class HttpRequest():
+    """
+    Request接口请求封装
+    """
 
     def http_request(self,url,data,method,type,**parms):
+        """
+        接口请求方法
+        :param url: 请求地址
+        :param data: 请求参数
+        :param method: 请求方法
+        :param type: 请求参数(方法)类型
+        :param parms: 其他参数
+        :return:
+        """
 
         try:
             if method.lower() == "get":
